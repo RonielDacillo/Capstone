@@ -7,13 +7,65 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
 </head>
-<body class="h-screen flex relative">
+<body class="bg-green-500 flex justify-center items-center h-screen">
 
     <!-- Back to Home Button -->
     <a href="Account.html" class="absolute top-4 left-4 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300">
         ← Back 
     </a>
+   <!-- Main Container -->
+   <div id="main-container" class="bg-white p-8 rounded-lg shadow-lg text-center w-96">
+    <img src="Images/logo.png" alt="Logo" class="mx-auto h-16">
+    <h2 class="text-2xl font-bold mt-4">ADMINISTRATOR</h2>
 
+    <p class="text-gray-500 mt-2">Admin</p>
+
+    <button onclick="showSection('developers')" class="bg-green-500 text-white w-full py-2 mt-4 rounded-lg hover:bg-green-700">Developers</button>
+    <button onclick="showSection('staff')" class="bg-green-500 text-white w-full py-2 mt-2 rounded-lg hover:bg-green-700">Staff</button>
+
+   
+</div>
+
+<!-- Developers Login Section -->
+<div id="developers-container" class="bg-white p-8 rounded-lg shadow-lg text-center w-96 hidden">
+    <img src="Images/logo.png" alt="Logo" class="mx-auto h-16">
+    <h2 class="text-2xl font-bold mt-4">Developers</h2>
+
+    <p class="text-gray-500 mt-2">Admin</p>
+
+    <input type="text" placeholder="Username" class="border w-full px-4 py-2 mt-4 rounded-lg">
+    <input type="password" placeholder="Password" class="border w-full px-4 py-2 mt-2 rounded-lg">
+
+    <button class="bg-green-500 text-white w-full py-2 mt-4 rounded-lg hover:bg-green-700">Login</button>
+</div>
+
+<!-- Staff Login Section -->
+<div id="staff-container" class="bg-white p-8 rounded-lg shadow-lg text-center w-96 hidden">
+    <img src="Images/logo.png" alt="Logo" class="mx-auto h-16">
+    <h2 class="text-2xl font-bold mt-4">Staff</h2>
+
+    <p class="text-gray-500 mt-2">Admin</p>
+
+    <input type="text" placeholder="Username" class="border w-full px-4 py-2 mt-4 rounded-lg">
+    <input type="password" placeholder="Password" class="border w-full px-4 py-2 mt-2 rounded-lg">
+
+    <button class="bg-green-500 text-white w-full py-2 mt-4 rounded-lg hover:bg-green-700">Login</button>
+</div>
+
+<!-- JavaScript to Switch Between Sections -->
+<script>
+    function showSection(section) {
+        document.getElementById("main-container").classList.add("hidden");
+        document.getElementById("developers-container").classList.add("hidden");
+        document.getElementById("staff-container").classList.add("hidden");
+
+        if (section === "developers") {
+            document.getElementById("developers-container").classList.remove("hidden");
+        } else if (section === "staff") {
+            document.getElementById("staff-container").classList.remove("hidden");
+        }
+    }
+</script>
    
 </body>
 </html>
