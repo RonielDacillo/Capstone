@@ -14,28 +14,33 @@
         ← Back to Home
     </a>
 
-    <!-- Left Section (Welcome & User Roles) -->
+    <!-- Left Section (User Role Selection) -->
     <div class="w-1/2 bg-[#115D5B] text-white flex flex-col justify-center items-center p-8">
         <h1 class="text-2xl font-bold mb-6">Welcome to CNLRRS</h1>
         <div class="flex space-x-6">
-            <div class="flex flex-col items-center">
+            <!-- Admin Button -->
+            <button onclick="redirectToLogin('admin')" class="flex flex-col items-center">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <i class="fas fa-user-cog text-[#115D5B] text-4xl"></i>
                 </div>
-                <p class="mt-2">Admin</p>
-            </div>
-            <div class="flex flex-col items-center">
+                <p class="mt-2 text-lg font-semibold">Admin</p>
+            </button>
+
+            <!-- Farmer Button -->
+            <button onclick="redirectToLogin('farmer')" class="flex flex-col items-center">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <i class="fas fa-users text-[#115D5B] text-4xl"></i>
                 </div>
-                <p class="mt-2">Farmers</p>
-            </div>
-            <div class="flex flex-col items-center">
+                <p class="mt-2 text-lg font-semibold">Farmers</p>
+            </button>
+
+            <!-- Client Button -->
+            <button onclick="redirectToLogin('client')" class="flex flex-col items-center">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
                     <i class="fas fa-handshake text-[#115D5B] text-4xl"></i>
                 </div>
-                <p class="mt-2">Client</p>
-            </div>
+                <p class="mt-2 text-lg font-semibold">Client</p>
+            </button>
         </div>
     </div>
 
@@ -53,6 +58,19 @@
             <p><i class="fas fa-user text-green-400"></i> Engr. Belich B. Frias</p>
         </div>
     </div>
+
+    <!-- JavaScript to Redirect Users -->
+    <script>
+        function redirectToLogin(role) {
+            if (role === "admin") {
+                window.location.href = "adminlogin.html"; // Replace with your admin login page
+            } else if (role === "farmer") {
+                window.location.href = "farmerlogin.html"; // Replace with your farmer login page
+            } else if (role === "client") {
+                window.location.href = "clientlogin.html"; // Replace with your client login page
+            }
+        }
+    </script>
 
 </body>
 </html>
