@@ -3,17 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Farmer Login/Signup - CNLRRS</title>
+    <title>Client Login/Signup - CNLRRS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
+    <!-- Replace with actual Font Awesome kit -->
+    <script src="https://kit.fontawesome.com/your_actual_kit.js" crossorigin="anonymous"></script>
 </head>
 <body class="h-screen flex relative">
 
-    <!-- Back to Home Button -->
-    <a href="Account.html" class="absolute top-4 left-4 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow-md hover:bg-gray-300">
+    <!-- Back Button -->
+    <a href="Account.html" class="absolute top-4 left-4 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300">
         ← Back 
     </a>
 
-   
+    <!-- Login/Signup Container -->
+    <div class="m-auto bg-white p-8 rounded-lg shadow-lg w-96">
+        <img src="Images/logo.png" alt="Logo" class="mx-auto h-16 mb-4">
+        
+        <!-- Login Form -->
+        <div id="login-section">
+            <h2 class="text-2xl font-bold text-center mb-4">Client Login</h2>
+            <form id="login-form" class="space-y-4">
+                <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded" required>
+                <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded" required>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+                    Login
+                </button>
+            </form>
+            <p class="mt-4 text-center">
+                New client? 
+                <a href="#" onclick="showSection('signup')" class="text-green-500 hover:underline">Create Account</a>
+            </p>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-section" class="hidden">
+            <h2 class="text-2xl font-bold text-center mb-4">Client Registration</h2>
+            <form id="signup-form" class="space-y-4">
+                <input type="text" name="company" placeholder="Company Name" class="w-full p-2 border rounded" required>
+                <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded" required>
+                <input type="text" name="contact" placeholder="Contact Person" class="w-full p-2 border rounded" required>
+                <input type="tel" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded" required>
+                <input type="password" name="password" placeholder="Password" class="w-full p-2 border rounded" required>
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+                    Register
+                </button>
+            </form>
+            <p class="mt-4 text-center">
+                Already have an account? 
+                <a href="#" onclick="showSection('login')" class="text-green-500 hover:underline">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+    function showSection(section) {
+        const login = document.getElementById('login-section');
+        const signup = document.getElementById('signup-section');
+        
+        if(section === 'signup') {
+            login.classList.add('hidden');
+            signup.classList.remove('hidden');
+        } else {
+            signup.classList.add('hidden');
+            login.classList.remove('hidden');
+        }
+    }
+
+    // Add form submission handlers
+    document.getElementById('login-form').addEventListener('submit', handleLogin);
+    document.getElementById('signup-form').addEventListener('submit', handleSignup);
+
+    async function handleLogin(e) {
+        e.preventDefault();
+        // Add login logic similar to admin login
+    }
+
+    async function handleSignup(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        
+        try {
+            const response = await fetch('register_client.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            // Handle response
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    </script>
 </body>
 </html>
